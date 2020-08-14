@@ -241,11 +241,39 @@ object functions {
 
   println(s"Total cost of 5 donuts with discount = ${applyDiscountValFunction(totalCost)}")
 
+  val applyTaxValFunction = (amount: Double) => {
+    println("Apply tax function")
+    val tax = 1 // fetch tax from database
+    amount + tax
+  }
+
+  println(s"Total cost of 5 donuts = ${ (applyDiscountValFunction andThen applyTaxValFunction)(totalCost) }")
 
 
+  //  Function Composition Using Compose
+  println(s"Total cost of 5 donuts = ${ (applyDiscountValFunction compose applyTaxValFunction)(totalCost) }")
 
 
+  //  Tail Recursive Function - @annotation.tailrec
+  val arrayDonuts: Array[String] = Array("Vanilla Donut", "Strawberry Donut", "Plain Donut", "Glazed Donut")
 
+  @annotation.tailrec
+  def search(donutName: String, donuts: Array[String], index: Int): Option[Boolean] = {
+    if(donuts.length == index) {
+      None
+    } else if(donuts(index) == donutName) {
+      Some(true)
+    } else {
+      val nextIndex = index + 1
+      search(donutName, donuts, nextIndex)
+    }
+  }
+
+  val found = search("Glazed Donut", arrayDonuts, 0)
+  println(s"Find Glazed Donut = $found")
+
+  val notFound = search("Chocolate Donut", arrayDonuts, 0)
+  println(s"Find Chocolate Donut = $notFound")
 
 
 }
