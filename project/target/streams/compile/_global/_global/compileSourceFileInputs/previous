@@ -1,1 +1,1 @@
-["sbt.Task[scala.collection.immutable.Map[java.lang.String, scala.collection.Seq[scala.Tuple2[java.nio.file.Path, sbt.nio.FileStamp]]]]",{"2.12.10":{"hashes":[],"lastModifiedTimes":[]}}]
+["sbt.Task[scala.collection.immutable.Map[java.lang.String, scala.collection.Seq[scala.Tuple2[java.nio.file.Path, sbt.nio.FileStamp]]]]",{"2.12.10":{"hashes":[["/Users/peace/Workspace/dyosc/project/CommonSettingsPlugin.scala","680fe2eaa10c0e8c76b2e0d7da6ea76763898ad1"],["/Users/peace/Workspace/dyosc/project/Build.scala","b6e5f4e933264c73b07ea726042272c4e91160b8"]],"lastModifiedTimes":[]}}]
