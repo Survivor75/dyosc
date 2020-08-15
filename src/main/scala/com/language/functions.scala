@@ -1,4 +1,4 @@
-package com.dyosc
+package com.language
 
 import scala.util.Random
 

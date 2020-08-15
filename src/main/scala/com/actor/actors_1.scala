@@ -1,4 +1,4 @@
-package com.akka
+package com.actor
 
 import akka.actor.typed.scaladsl.Behaviors
 import akka.actor.typed.scaladsl.LoggerOps

@@ -1,4 +1,4 @@
-package com.dyosc
+package com.language
 
 object trait_2 {
 
