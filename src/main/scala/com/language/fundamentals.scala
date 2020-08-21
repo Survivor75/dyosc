@@ -3,66 +3,66 @@ package com.language
 object fundamentals {
 
   //  Immutable variables
-  val donutsToBuy: Int = 5
+  val chocalatesToBuy: Int = 5
 
 
   //  Mutable variables
-  var favoriteDonut: String = "Glazed Donut"
-  favoriteDonut = "Vanilla Donut"
+  var favoritechocalate: String = "Glazed chocalate"
+  favoritechocalate = "Vanilla chocalate"
 
 
   //  Lazy initialization
-  lazy val donutService = "initialize some donut service"
+  lazy val chocalateService = "initialize some chocalate service"
 
 
   //  Scala Supported Types
-  val donutsBought: Int = 5
-  val bigNumberOfDonuts: Long = 100000000L
-  val smallNumberOfDonuts: Short = 1
-  val priceOfDonut: Double = 2.50
-  val donutPrice: Float = 2.50f
-  val donutStoreName: String = "allaboutscala Donut Store"
-  val donutByte: Byte = 0xa
-  val donutFirstLetter: Char = 'D'
+  val chocalatesBought: Int = 5
+  val bigNumberOfchocalates: Long = 100000000L
+  val smallNumberOfchocalates: Short = 1
+  val priceOfchocalate: Double = 2.50
+  val chocalatePrice: Float = 2.50f
+  val chocalateStoreName: String = "allaboutscala chocalate Store"
+  val chocalateByte: Byte = 0xa
+  val chocalateFirstLetter: Char = 'D'
   val nothing: Unit = ()
 
 
   //  Declare a variable with no initialization
-  var leastFavoriteDonut: String = _
-  leastFavoriteDonut = "Plain Donut"
+  var leastFavoritechocalate: String = _
+  leastFavoritechocalate = "Plain chocalate"
 
 
   //  If Else Statement And Expression
   val numberOfPeople = 20
-  val donutsPerPerson = 2
-  val defaultDonutsToBuy = 8
+  val chocalatesPerPerson = 2
+  val defaultchocalatesToBuy = 8
 
   if(numberOfPeople > 10) {
-    println(s"Number of donuts to buy = ${numberOfPeople * donutsPerPerson}")
+    println(s"Number of chocalates to buy = ${numberOfPeople * chocalatesPerPerson}")
   } else if (numberOfPeople == 0) {
     println("Number of people is zero.")
-    println("No need to buy donuts.")
+    println("No need to buy chocalates.")
   } else {
-    println(s"Number of donuts to buy = $defaultDonutsToBuy")
+    println(s"Number of chocalates to buy = $defaultchocalatesToBuy")
   }
 
 
   //  For Comprehension
-  for(numberOfDonuts <- 1 to 5){
-    println(s"Number of donuts to buy = $numberOfDonuts")
+  for(numberOfchocalates <- 1 to 5){
+    println(s"Number of chocalates to buy = $numberOfchocalates")
   }
 
-  for(numberOfDonuts <- 1 until 5){
-    println(s"Number of donuts to buy = $numberOfDonuts")
+  for(numberOfchocalates <- 1 until 5){
+    println(s"Number of chocalates to buy = $numberOfchocalates")
   }
 
-  val donutIngredients = List("flour", "sugar", "egg yolks", "syrup", "flavouring")
-  for(ingredient <- donutIngredients if ingredient == "sugar"){
+  val chocalateIngredients = List("flour", "sugar", "egg yolks", "syrup", "flavouring")
+  for(ingredient <- chocalateIngredients if ingredient == "sugar"){
     println(s"Found sweetening ingredient = $ingredient")
   }
 
   val sweeteningIngredients = for {
-    ingredient <- donutIngredients
+    ingredient <- chocalateIngredients
     if (ingredient == "sugar" || ingredient == "syrup")
   } yield ingredient
   println(s"Sweetening ingredients = $sweeteningIngredients")
@@ -80,42 +80,42 @@ object fundamentals {
 
 
   //  Pattern Matching
-  val donutType = "Glazed Donut"
-  donutType match {
-    case "Glazed Donut" => println("Very tasty")
-    case "Plain Donut" => println("Tasty")
+  val chocalateType = "Glazed chocalate"
+  chocalateType match {
+    case "Glazed chocalate" => println("Very tasty")
+    case "Plain chocalate" => println("Tasty")
   }
 
-  val tasteLevel = donutType match {
-    case "Glazed Donut" => "Very tasty"
-    case "Plain Donut" => "Tasty"
+  val tasteLevel = chocalateType match {
+    case "Glazed chocalate" => "Very tasty"
+    case "Plain chocalate" => "Tasty"
   }
-  println(s"Taste level of $donutType = $tasteLevel")
+  println(s"Taste level of $chocalateType = $tasteLevel")
 
-  val tasteLevel2 = donutType match {
-    case "Glazed Donut" => "Very tasty"
-    case "Plain Donut" => "Tasty"
+  val tasteLevel2 = chocalateType match {
+    case "Glazed chocalate" => "Very tasty"
+    case "Plain chocalate" => "Tasty"
     case _ => "Tasty"
   }
-  println(s"Taste level of $donutType = $tasteLevel2")
+  println(s"Taste level of $chocalateType = $tasteLevel2")
 
-  val tasteLevel3 = donutType match {
-    case "Glazed Donut" | "Strawberry Donut" => "Very tasty"
-    case "Plain Donut" => "Tasty"
+  val tasteLevel3 = chocalateType match {
+    case "Glazed chocalate" | "Strawberry chocalate" => "Very tasty"
+    case "Plain chocalate" => "Tasty"
     case _ => "Tasty"
   }
-  println(s"Taste level of $donutType = $tasteLevel3")
+  println(s"Taste level of $chocalateType = $tasteLevel3")
 
-  val tasteLevel4 = donutType match {
-    case donut if (donut.contains("Glazed") || donut.contains("Strawberry")) => "Very tasty"
-    case "Plain Donut"  => "Tasty"
+  val tasteLevel4 = chocalateType match {
+    case chocalate if (chocalate.contains("Glazed") || chocalate.contains("Strawberry")) => "Very tasty"
+    case "Plain chocalate"  => "Tasty"
     case _  => "Tasty"
   }
-  println(s"Taste level of $donutType = $tasteLevel4")
+  println(s"Taste level of $chocalateType = $tasteLevel4")
 
   /*
-  val priceOfDonut: Any = 1
-  val priceType = priceOfDonut match {
+  val priceOfchocalate: Any = 1
+  val priceType = priceOfchocalate match {
     case price: Int => "Int"
     case price: Double => "Double"
     case price: Float => "Float"
@@ -124,12 +124,12 @@ object fundamentals {
     case price: Char => "Char"
     case price: Long => "Long"
   }
-  println(s"Donut price type = $priceType")
+  println(s"chocalate price type = $priceType")
 
  */
 
-  object Donut extends Enumeration {
-    type Donut = Value
+  object chocalate extends Enumeration {
+    type chocalate = Value
 
     val Glazed      = Value("Glazed")
     val Strawberry  = Value("Strawberry")

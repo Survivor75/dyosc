@@ -3,21 +3,21 @@ package com.language
 object classes_1 {
 
   //  Create Classes And Objects
-  class Donut(name: String, productCode: Long) {
+  class chocalate(name: String, productCode: Long) {
 
-    def print = println(s"Donut name = $name, productCode = $productCode")
+    def print = println(s"chocalate name = $name, productCode = $productCode")
 
   }
 
-  val glazedDonut = new Donut("Glazed Donut", 1111)
-  val vanillaDonut = new Donut("Vanilla Donut", 2222)
+  val glazedchocalate = new chocalate("Glazed chocalate", 1111)
+  val vanillachocalate = new chocalate("Vanilla chocalate", 2222)
 
 
   //  Use Companion Objects
-  object Donut {
+  object chocalate {
 
-    def apply(name: String, productCode: Long): Donut = {
-      new Donut(name, productCode)
+    def apply(name: String, productCode: Long): chocalate = {
+      new chocalate(name, productCode)
     }
 
   }

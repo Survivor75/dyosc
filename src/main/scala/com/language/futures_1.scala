@@ -8,63 +8,63 @@ import scala.util.{Failure, Success}
 object futures_1 {
 
   //  Define a method which returns a Future
-  def donutStock(donut: String): Future[Option[Int]] = Future {
-    println("checking donut stock")
-    if(donut == "vanilla donut") Some(10) else None
+  def chocalateStock(chocalate: String): Future[Option[Int]] = Future {
+    println("checking chocalate stock")
+    if(chocalate == "vanilla chocalate") Some(10) else None
   }
 
-  val vanillaDonutStock = Await.result(donutStock("vanilla donut"), 5 seconds)
-  println(s"Stock of vanilla donut = $vanillaDonutStock")
+  val vanillachocalateStock = Await.result(chocalateStock("vanilla chocalate"), 5 seconds)
+  println(s"Stock of vanilla chocalate = $vanillachocalateStock")
 
 
   //  Non blocking future result
-  donutStock("vanilla donut").onComplete {
-    case Success(stock) => println(s"Stock for vanilla donut = $stock")
-    case Failure(e) => println(s"Failed to find vanilla donut stock, exception = $e")
+  chocalateStock("vanilla chocalate").onComplete {
+    case Success(stock) => println(s"Stock for vanilla chocalate = $stock")
+    case Failure(e) => println(s"Failed to find vanilla chocalate stock, exception = $e")
   }
   Thread.sleep(3000)
 
 
   //  Chain futures using flatMap
-  def buyDonuts(quantity: Int): Future[Boolean] = Future {
-    println(s"buying $quantity donuts")
+  def buychocalates(quantity: Int): Future[Boolean] = Future {
+    println(s"buying $quantity chocalates")
     true
   }
 
-  val buyingDonuts: Future[Boolean] = donutStock("plain donut").flatMap(qty => buyDonuts(qty.getOrElse(0)))
+  val buyingchocalates: Future[Boolean] = chocalateStock("plain chocalate").flatMap(qty => buychocalates(qty.getOrElse(0)))
 
-  val isSuccess = Await.result(buyingDonuts, 5 seconds)
-  println(s"Buying vanilla donut was successful = $isSuccess")
+  val isSuccess = Await.result(buyingchocalates, 5 seconds)
+  println(s"Buying vanilla chocalate was successful = $isSuccess")
 
 
   //  Chain futures using for comprehension
   for {
-    stock     <- donutStock("vanilla donut")
-    isSuccess <- buyDonuts(stock.getOrElse(0))
-  } yield println(s"Buying vanilla donut was successful = $isSuccess")
+    stock     <- chocalateStock("vanilla chocalate")
+    isSuccess <- buychocalates(stock.getOrElse(0))
+  } yield println(s"Buying vanilla chocalate was successful = $isSuccess")
 
   Thread.sleep(3000)
 
 
   //  Future option with for comprehension
   for {
-    someStock  <- donutStock("vanilla donut")
-    isSuccess  <- buyDonuts(someStock.getOrElse(0))
-  } yield println(s"Buying vanilla donut was successful = $isSuccess")
+    someStock  <- chocalateStock("vanilla chocalate")
+    isSuccess  <- buychocalates(someStock.getOrElse(0))
+  } yield println(s"Buying vanilla chocalate was successful = $isSuccess")
 
 
   //  Future option with map
-  donutStock("vanilla donut")
-    .map(someQty => println(s"Buying ${someQty.getOrElse(0)} vanilla donuts"))
+  chocalateStock("vanilla chocalate")
+    .map(someQty => println(s"Buying ${someQty.getOrElse(0)} vanilla chocalates"))
 
 
   //  Composing futures
-  val resultFromMap: Future[Future[Boolean]] = donutStock("vanilla donut")
-    .map(someQty => buyDonuts(someQty.getOrElse(0)))
+  val resultFromMap: Future[Future[Boolean]] = chocalateStock("vanilla chocalate")
+    .map(someQty => buychocalates(someQty.getOrElse(0)))
   Thread.sleep(1000)
 
-  val resultFromFlatMap: Future[Boolean] = donutStock("vanilla donut")
-    .flatMap(someQty => buyDonuts(someQty.getOrElse(0)))
+  val resultFromFlatMap: Future[Boolean] = chocalateStock("vanilla chocalate")
+    .flatMap(someQty => buychocalates(someQty.getOrElse(0)))
   Thread.sleep(1000)
 
 
@@ -73,7 +73,7 @@ object futures_1 {
     println("processPayment ... sleep for 1 second")
     Thread.sleep(1000)
   }
-  val futureOperations: List[Future[Any]] = List(donutStock("vanilla donut"), buyDonuts(10), processPayment())
+  val futureOperations: List[Future[Any]] = List(chocalateStock("vanilla chocalate"), buychocalates(10), processPayment())
 
   val futureSequenceResults = Future.sequence(futureOperations)
   futureSequenceResults.onComplete {

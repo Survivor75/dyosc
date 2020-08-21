@@ -3,87 +3,87 @@ package com.language
 class trait_3 {
 
   //  Traits For Dependency Injection
-  trait DonutDatabase[A] {
+  trait chocalateDatabase[A] {
 
-    def addOrUpdate(donut: A): Long
+    def addOrUpdate(chocalate: A): Long
 
-    def query(donut: A): A
+    def query(chocalate: A): A
 
-    def delete(donut: A): Boolean
+    def delete(chocalate: A): Boolean
   }
 
-  class CassandraDonutStore[A] extends DonutDatabase[A] {
+  class CassandrachocalateStore[A] extends chocalateDatabase[A] {
 
-    override def addOrUpdate(donut: A): Long = {
-      println(s"CassandraDonutDatabase-> addOrUpdate method -> donut: $donut")
+    override def addOrUpdate(chocalate: A): Long = {
+      println(s"CassandrachocalateDatabase-> addOrUpdate method -> chocalate: $chocalate")
       1
     }
 
-    override def query(donut: A): A = {
-      println(s"CassandraDonutDatabase-> query method -> donut: $donut")
-      donut
+    override def query(chocalate: A): A = {
+      println(s"CassandrachocalateDatabase-> query method -> chocalate: $chocalate")
+      chocalate
     }
 
-    override def delete(donut: A): Boolean = {
-      println(s"CassandraDonutDatabase-> delete method -> donut: $donut")
+    override def delete(chocalate: A): Boolean = {
+      println(s"CassandrachocalateDatabase-> delete method -> chocalate: $chocalate")
       true
     }
   }
 
-  trait DonutShoppingCartDao[A] {
+  trait chocalateShoppingCartDao[A] {
 
-    val donutDatabase: DonutDatabase[A] // dependency injection
+    val chocalateDatabase: chocalateDatabase[A] // dependency injection
 
-    def add(donut: A): Long = {
-      println(s"DonutShoppingCartDao-> add method -> donut: $donut")
-      donutDatabase.addOrUpdate(donut)
+    def add(chocalate: A): Long = {
+      println(s"chocalateShoppingCartDao-> add method -> chocalate: $chocalate")
+      chocalateDatabase.addOrUpdate(chocalate)
     }
 
-    def update(donut: A): Boolean = {
-      println(s"DonutShoppingCartDao-> update method -> donut: $donut")
-      donutDatabase.addOrUpdate(donut)
+    def update(chocalate: A): Boolean = {
+      println(s"chocalateShoppingCartDao-> update method -> chocalate: $chocalate")
+      chocalateDatabase.addOrUpdate(chocalate)
       true
     }
 
-    def search(donut: A): A = {
-      println(s"DonutShoppingCartDao-> search method -> donut: $donut")
-      donutDatabase.query(donut)
+    def search(chocalate: A): A = {
+      println(s"chocalateShoppingCartDao-> search method -> chocalate: $chocalate")
+      chocalateDatabase.query(chocalate)
     }
 
-    def delete(donut: A): Boolean = {
-      println(s"DonutShoppingCartDao-> delete method -> donut: $donut")
-      donutDatabase.delete(donut)
+    def delete(chocalate: A): Boolean = {
+      println(s"chocalateShoppingCartDao-> delete method -> chocalate: $chocalate")
+      chocalateDatabase.delete(chocalate)
     }
 
   }
 
-  trait DonutInventoryService[A] {
+  trait chocalateInventoryService[A] {
 
-    val donutDatabase: DonutDatabase[A] // dependency injection
+    val chocalateDatabase: chocalateDatabase[A] // dependency injection
 
-    def checkStockQuantity(donut: A): Int = {
-      println(s"DonutInventoryService-> checkStockQuantity method -> donut: $donut")
-      donutDatabase.query(donut)
+    def checkStockQuantity(chocalate: A): Int = {
+      println(s"chocalateInventoryService-> checkStockQuantity method -> chocalate: $chocalate")
+      chocalateDatabase.query(chocalate)
       1
     }
 
   }
 
-  trait DonutShoppingCartServices[A] extends DonutShoppingCartDao[A] with DonutInventoryService[A] {
-    override val donutDatabase: DonutDatabase[A] = new CassandraDonutStore[A]()
+  trait chocalateShoppingCartServices[A] extends chocalateShoppingCartDao[A] with chocalateInventoryService[A] {
+    override val chocalateDatabase: chocalateDatabase[A] = new CassandrachocalateStore[A]()
   }
 
-  class DonutShoppingCart[A] extends DonutShoppingCartServices[A] {
+  class chocalateShoppingCart[A] extends chocalateShoppingCartServices[A] {
 
   }
 
-  val donutShoppingCart: DonutShoppingCart[String] = new DonutShoppingCart[String]()
-  donutShoppingCart.add("Vanilla Donut")
-  donutShoppingCart.update("Vanilla Donut")
-  donutShoppingCart.search("Vanilla Donut")
-  donutShoppingCart.delete("Vanilla Donut")
+  val chocalateShoppingCart: chocalateShoppingCart[String] = new chocalateShoppingCart[String]()
+  chocalateShoppingCart.add("Vanilla chocalate")
+  chocalateShoppingCart.update("Vanilla chocalate")
+  chocalateShoppingCart.search("Vanilla chocalate")
+  chocalateShoppingCart.delete("Vanilla chocalate")
 
-  donutShoppingCart.checkStockQuantity("Vanilla Donut")
+  chocalateShoppingCart.checkStockQuantity("Vanilla chocalate")
 
 
 }

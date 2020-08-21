@@ -3,52 +3,52 @@ package com.language
 object trait_1 {
 
   //  Create And Extend Trait In Scala
-  trait DonutShoppingCartDao {
+  trait chocalateShoppingCartDao {
 
-    def add(donutName: String): Long
+    def add(chocalateName: String): Long
 
-    def update(donutName: String): Boolean
+    def update(chocalateName: String): Boolean
 
-    def search(donutName: String): String
+    def search(chocalateName: String): String
 
-    def delete(donutName: String): Boolean
+    def delete(chocalateName: String): Boolean
 
   }
 
-  class DonutShoppingCart extends DonutShoppingCartDao {
+  class chocalateShoppingCart extends chocalateShoppingCartDao {
 
-    override def add(donutName: String): Long = {
-      println(s"DonutShoppingCart-> add method -> donutName: $donutName")
+    override def add(chocalateName: String): Long = {
+      println(s"chocalateShoppingCart-> add method -> chocalateName: $chocalateName")
       1
     }
 
-    override def update(donutName: String): Boolean = {
-      println(s"DonutShoppingCart-> update method -> donutName: $donutName")
+    override def update(chocalateName: String): Boolean = {
+      println(s"chocalateShoppingCart-> update method -> chocalateName: $chocalateName")
       true
     }
 
-    override def search(donutName: String): String = {
-      println(s"DonutShoppingCart-> search method -> donutName: $donutName")
-      donutName
+    override def search(chocalateName: String): String = {
+      println(s"chocalateShoppingCart-> search method -> chocalateName: $chocalateName")
+      chocalateName
     }
 
-    override def delete(donutName: String): Boolean = {
-      println(s"DonutShoppingCart-> delete method -> donutName: $donutName")
+    override def delete(chocalateName: String): Boolean = {
+      println(s"chocalateShoppingCart-> delete method -> chocalateName: $chocalateName")
       true
     }
   }
 
-  val donutShoppingCart1: DonutShoppingCart = new DonutShoppingCart()
-  donutShoppingCart1.add("Vanilla Donut")
-  donutShoppingCart1.update("Vanilla Donut")
-  donutShoppingCart1.search("Vanilla Donut")
-  donutShoppingCart1.delete("Vanilla Donut")
+  val chocalateShoppingCart1: chocalateShoppingCart = new chocalateShoppingCart()
+  chocalateShoppingCart1.add("Vanilla chocalate")
+  chocalateShoppingCart1.update("Vanilla chocalate")
+  chocalateShoppingCart1.search("Vanilla chocalate")
+  chocalateShoppingCart1.delete("Vanilla chocalate")
 
 
-  val donutShoppingCart2: DonutShoppingCartDao = new DonutShoppingCart()
-  donutShoppingCart2.add("Vanilla Donut")
-  donutShoppingCart2.update("Vanilla Donut")
-  donutShoppingCart2.search("Vanilla Donut")
-  donutShoppingCart2.delete("Vanilla Donut")
+  val chocalateShoppingCart2: chocalateShoppingCartDao = new chocalateShoppingCart()
+  chocalateShoppingCart2.add("Vanilla chocalate")
+  chocalateShoppingCart2.update("Vanilla chocalate")
+  chocalateShoppingCart2.search("Vanilla chocalate")
+  chocalateShoppingCart2.delete("Vanilla chocalate")
 
 }

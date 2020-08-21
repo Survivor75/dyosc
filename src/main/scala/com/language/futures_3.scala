@@ -13,15 +13,15 @@ object futures_3 {
   val executor = Executors.newSingleThreadExecutor()
   implicit val ec = scala.concurrent.ExecutionContext.fromExecutor(executor)
 
-  def donutStock(donut: String): Future[Int] = Future {
+  def chocalateStock(chocalate: String): Future[Int] = Future {
 
-    println("checking donut stock")
+    println("checking chocalate stock")
     10
   }
 
-  val donutStockOperation = donutStock("vanilla donut")
-  donutStockOperation.onComplete {
-    case Success(donutStock)  => println(s"Results $donutStock")
+  val chocalateStockOperation = chocalateStock("vanilla chocalate")
+  chocalateStockOperation.onComplete {
+    case Success(chocalateStock)  => println(s"Results $chocalateStock")
     case Failure(e)           => println(s"Error processing future operations, error = ${e.getMessage}")
   }
 
@@ -30,28 +30,28 @@ object futures_3 {
 
 
   //  Future recover
-  donutStock("unknown donut")
+  chocalateStock("unknown chocalate")
     .recover { case e: IllegalStateException if e.getMessage == "Out of stock" => 0 }
     .onComplete {
-      case Success(donutStock)  => println(s"Results $donutStock")
+      case Success(chocalateStock)  => println(s"Results $chocalateStock")
       case Failure(e)           => println(s"Error processing future operations, error = ${e.getMessage}")
     }
 
 
   //  Future promise
-  val donutStockPromise = Promise[Int]()
+  val chocalateStockPromise = Promise[Int]()
 
-  val donutStockFuture = donutStockPromise.future
-  donutStockFuture.onComplete {
-    case Success(stock) => println(s"Stock for vanilla donut = $stock")
-    case Failure(e)     => println(s"Failed to find vanilla donut stock, exception = $e")
+  val chocalateStockFuture = chocalateStockPromise.future
+  chocalateStockFuture.onComplete {
+    case Success(stock) => println(s"Stock for vanilla chocalate = $stock")
+    case Failure(e)     => println(s"Failed to find vanilla chocalate stock, exception = $e")
   }
 
-  val donut = "vanilla donut"
-  if(donut == "vanilla donut") {
-    donutStockPromise.success(donutStock(donut))
+  val chocalate = "vanilla chocalate"
+  if(chocalate == "vanilla chocalate") {
+    chocalateStockPromise.success(chocalateStock(chocalate))
   } else {
-    donutStockPromise.failure(Try(donutStock(donut)).failed.get)
+    chocalateStockPromise.failure(Try(chocalateStock(chocalate)).failed.get)
   }
 
 

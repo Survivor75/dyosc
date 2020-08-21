@@ -3,73 +3,73 @@ package com.language
 class trait_4 {
 
   //  Avoid Cake Pattern
-  class DonutInventoryService[T] {
-    def checkStock(donut: T): Boolean = {
-      println("DonutInventoryService->checkStock")
+  class chocalateInventoryService[T] {
+    def checkStock(chocalate: T): Boolean = {
+      println("chocalateInventoryService->checkStock")
       true
     }
   }
 
-  class DonutPricingService[T] {
-    def calculatePrice(donut: T): Double = {
-      println("DonutPricingService->calculatePrice")
+  class chocalatePricingService[T] {
+    def calculatePrice(chocalate: T): Double = {
+      println("chocalatePricingService->calculatePrice")
       2.50
     }
   }
 
-  class DonutOrderService[T] {
-    def createOrder(donut: T, quantity: Int, price: Double): Int = {
-      println(s"Saving donut order to database: donut = $donut, quantity = $quantity, price = $price")
+  class chocalateOrderService[T] {
+    def createOrder(chocalate: T, quantity: Int, price: Double): Int = {
+      println(s"Saving chocalate order to database: chocalate = $chocalate, quantity = $quantity, price = $price")
       100 // the id of the booked order
     }
   }
 
-  class DonutShoppingCartService[T] (
-                                      donutInventoryService: DonutInventoryService[T],
-                                      donutPricingService: DonutPricingService[T],
-                                      donutOrderService: DonutOrderService[T]) {
+  class chocalateShoppingCartService[T] (
+                                      chocalateInventoryService: chocalateInventoryService[T],
+                                      chocalatePricingService: chocalatePricingService[T],
+                                      chocalateOrderService: chocalateOrderService[T]) {
 
-    def bookOrder(donut: T, quantity: Int): Int = {
-      println("DonutShoppingCartService->bookOrder")
+    def bookOrder(chocalate: T, quantity: Int): Int = {
+      println("chocalateShoppingCartService->bookOrder")
 
-      donutInventoryService.checkStock(donut) match {
+      chocalateInventoryService.checkStock(chocalate) match {
         case true =>
-          val price = donutPricingService.calculatePrice(donut)
-          donutOrderService.createOrder(donut, quantity, price) // the id of the booked order
+          val price = chocalatePricingService.calculatePrice(chocalate)
+          chocalateOrderService.createOrder(chocalate, quantity, price) // the id of the booked order
 
         case false =>
-          println(s"Sorry donut $donut is out of stock!")
+          println(s"Sorry chocalate $chocalate is out of stock!")
           -100 // return some error code to identify out of stock
       }
     }
   }
 
-  trait DonutStoreServices {
-    val donutInventoryService = new DonutInventoryService[String]
-    val donutPricingService = new DonutPricingService[String]
-    val donutOrderService = new DonutOrderService[String]
-    val donutShoppingCartService = new DonutShoppingCartService(donutInventoryService, donutPricingService, donutOrderService)
+  trait chocalateStoreServices {
+    val chocalateInventoryService = new chocalateInventoryService[String]
+    val chocalatePricingService = new chocalatePricingService[String]
+    val chocalateOrderService = new chocalateOrderService[String]
+    val chocalateShoppingCartService = new chocalateShoppingCartService(chocalateInventoryService, chocalatePricingService, chocalateOrderService)
   }
 
-  trait DonutStoreAppController {
-    this: DonutStoreServices =>
+  trait chocalateStoreAppController {
+    this: chocalateStoreServices =>
 
-    def bookOrder(donut: String, quantity: Int): Int = {
-      println("DonutStoreAppController->bookOrder")
-      donutShoppingCartService.bookOrder(donut, quantity)
+    def bookOrder(chocalate: String, quantity: Int): Int = {
+      println("chocalateStoreAppController->bookOrder")
+      chocalateShoppingCartService.bookOrder(chocalate, quantity)
     }
   }
 
-  object DonutStoreApp extends DonutStoreAppController with DonutStoreServices
+  object chocalateStoreApp extends chocalateStoreAppController with chocalateStoreServices
 
-  trait MockedDonutStoreServices extends DonutStoreServices {
-    override val donutInventoryService: DonutInventoryService[String] = ???
-    override val donutPricingService: DonutPricingService[String] = ???
-    override val donutOrderService: DonutOrderService[String] = ???
-    override val donutShoppingCartService: DonutShoppingCartService[String] = new DonutShoppingCartService[String](
-      donutInventoryService, donutPricingService, donutOrderService)
+  trait MockedchocalateStoreServices extends chocalateStoreServices {
+    override val chocalateInventoryService: chocalateInventoryService[String] = ???
+    override val chocalatePricingService: chocalatePricingService[String] = ???
+    override val chocalateOrderService: chocalateOrderService[String] = ???
+    override val chocalateShoppingCartService: chocalateShoppingCartService[String] = new chocalateShoppingCartService[String](
+      chocalateInventoryService, chocalatePricingService, chocalateOrderService)
   }
 
-  object MockedDonutStoreApp extends DonutStoreAppController with MockedDonutStoreServices
+  object MockedchocalateStoreApp extends chocalateStoreAppController with MockedchocalateStoreServices
 
 }

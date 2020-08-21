@@ -3,65 +3,65 @@ package com.language
 object trait_2 {
 
   //  Create Trait With Type Parameters
-  trait DonutShoppingCartDao[A] {
+  trait chocalateShoppingCartDao[A] {
 
-    def add(donut: A): Long
+    def add(chocalate: A): Long
 
-    def update(donut: A): Boolean
+    def update(chocalate: A): Boolean
 
-    def search(donut: A): A
+    def search(chocalate: A): A
 
-    def delete(donut: A): Boolean
+    def delete(chocalate: A): Boolean
 
   }
 
   //  Extend Multiple Traits
-  trait DonutInventoryService[A] {
+  trait chocalateInventoryService[A] {
 
-    def checkStockQuantity(donut: A): Int
+    def checkStockQuantity(chocalate: A): Int
 
   }
 
-  class DonutShoppingCart[A] extends DonutShoppingCartDao[A] with DonutInventoryService[A] {
+  class chocalateShoppingCart[A] extends chocalateShoppingCartDao[A] with chocalateInventoryService[A] {
 
-    override def add(donut: A): Long = {
-      println(s"DonutShoppingCart-> add method -> donut: $donut")
+    override def add(chocalate: A): Long = {
+      println(s"chocalateShoppingCart-> add method -> chocalate: $chocalate")
       1
     }
 
-    override def update(donut: A): Boolean = {
-      println(s"DonutShoppingCart-> update method -> donut: $donut")
+    override def update(chocalate: A): Boolean = {
+      println(s"chocalateShoppingCart-> update method -> chocalate: $chocalate")
       true
     }
 
-    override def search(donut: A): A = {
-      println(s"DonutShoppingCart-> search method -> donut: $donut")
-      donut
+    override def search(chocalate: A): A = {
+      println(s"chocalateShoppingCart-> search method -> chocalate: $chocalate")
+      chocalate
     }
 
-    override def delete(donut: A): Boolean = {
-      println(s"DonutShoppingCart-> delete method -> donut: $donut")
+    override def delete(chocalate: A): Boolean = {
+      println(s"chocalateShoppingCart-> delete method -> chocalate: $chocalate")
       true
     }
 
-    override def checkStockQuantity(donut: A): Int = {
-      println(s"DonutShoppingCart-> checkStockQuantity method -> donut: $donut")
+    override def checkStockQuantity(chocalate: A): Int = {
+      println(s"chocalateShoppingCart-> checkStockQuantity method -> chocalate: $chocalate")
       10
     }
   }
 
-  val donutShoppingCart: DonutShoppingCart[String] = new DonutShoppingCart[String]()
-  donutShoppingCart.add("Vanilla Donut")
-  donutShoppingCart.update("Vanilla Donut")
-  donutShoppingCart.search("Vanilla Donut")
-  donutShoppingCart.delete("Vanilla Donut")
+  val chocalateShoppingCart: chocalateShoppingCart[String] = new chocalateShoppingCart[String]()
+  chocalateShoppingCart.add("Vanilla chocalate")
+  chocalateShoppingCart.update("Vanilla chocalate")
+  chocalateShoppingCart.search("Vanilla chocalate")
+  chocalateShoppingCart.delete("Vanilla chocalate")
 
-  val donutShoppingCart2: DonutShoppingCartDao[String] = new DonutShoppingCart[String]()
-  donutShoppingCart2.add("Vanilla Donut")
-  donutShoppingCart2.update("Vanilla Donut")
-  donutShoppingCart2.search("Vanilla Donut")
-  donutShoppingCart2.delete("Vanilla Donut")
+  val chocalateShoppingCart2: chocalateShoppingCartDao[String] = new chocalateShoppingCart[String]()
+  chocalateShoppingCart2.add("Vanilla chocalate")
+  chocalateShoppingCart2.update("Vanilla chocalate")
+  chocalateShoppingCart2.search("Vanilla chocalate")
+  chocalateShoppingCart2.delete("Vanilla chocalate")
 
-  donutShoppingCart.checkStockQuantity("Vanilla Donut")
+  chocalateShoppingCart.checkStockQuantity("Vanilla chocalate")
 
 }

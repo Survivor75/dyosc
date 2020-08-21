@@ -3,55 +3,55 @@ package com.language
 class classes_4 {
 
   //  Extend Class - Class Inheritance
-  abstract class Donut(name: String) {
+  abstract class chocalate(name: String) {
 
     def printName: Unit
 
   }
 
-  class VanillaDonut(name: String) extends Donut(name) {
+  class Vanillachocalate(name: String) extends chocalate(name) {
 
     override def printName: Unit = println(name)
 
   }
 
-  object VanillaDonut {
+  object Vanillachocalate {
 
-    def apply(name: String): Donut = {
-      new VanillaDonut(name)
+    def apply(name: String): chocalate = {
+      new Vanillachocalate(name)
     }
 
   }
 
-  class GlazedDonut(name: String) extends Donut(name) {
+  class Glazedchocalate(name: String) extends chocalate(name) {
 
     override def printName: Unit = println(name)
 
   }
 
-  object GlazedDonut {
+  object Glazedchocalate {
 
-    def apply(name: String): Donut = {
-      new GlazedDonut(name)
+    def apply(name: String): chocalate = {
+      new Glazedchocalate(name)
     }
 
   }
 
-  val vanillaDonut: Donut = VanillaDonut("Vanilla Donut")
-  vanillaDonut.printName
+  val vanillachocalate: chocalate = Vanillachocalate("Vanilla chocalate")
+  vanillachocalate.printName
 
-  val glazedDonut: Donut = GlazedDonut("Glazed Donut")
-  glazedDonut.printName
+  val glazedchocalate: chocalate = Glazedchocalate("Glazed chocalate")
+  glazedchocalate.printName
 
 
   //  Extend Case Class - Case Class Inheritance
-  case class VanillaDonutCase(name: String) extends Donut(name) {
+  case class VanillachocalateCase(name: String) extends chocalate(name) {
 
     override def printName: Unit = println(name)
 
   }
 
-  case class GlazedDonutCase(name: String) extends Donut(name) {
+  case class GlazedchocalateCase(name: String) extends chocalate(name) {
 
     override def printName: Unit = println(name)
 
@@ -59,13 +59,13 @@ class classes_4 {
 
 
   //  Create Typed Class
-  class ShoppingCart[D <: Donut](donuts: Seq[D]) {
+  class ShoppingCart[D <: chocalate](chocalates: Seq[D]) {
 
-    def printCartItems: Unit = donuts.foreach(_.printName)
+    def printCartItems: Unit = chocalates.foreach(_.printName)
 
   }
 
-  val shoppingCart: ShoppingCart[Donut] = new ShoppingCart(Seq[Donut](vanillaDonut, glazedDonut))
+  val shoppingCart: ShoppingCart[chocalate] = new ShoppingCart(Seq[chocalate](vanillachocalate, glazedchocalate))
   shoppingCart.printCartItems
 
 }

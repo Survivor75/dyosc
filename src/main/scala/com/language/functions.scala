@@ -5,69 +5,69 @@ import scala.util.Random
 object functions {
 
   //  How to define and use a function which has no parameters and has a return type
-  def favoriteDonut(): String = {
-    "Glazed Donut"
+  def favoritechocalate(): String = {
+    "Glazed chocalate"
   }
 
-  val myFavoriteDonut = favoriteDonut()
-  println(s"My favorite donut is $myFavoriteDonut")
+  val myFavoritechocalate = favoritechocalate()
+  println(s"My favorite chocalate is $myFavoritechocalate")
 
 
   //  How to define and use a function with no return type
-  def printDonutSalesReport(): Unit = {
+  def printchocalateSalesReport(): Unit = {
 
-    println("Printing donut sales report... done!")
+    println("Printing chocalate sales report... done!")
   }
-  printDonutSalesReport()
+  printchocalateSalesReport()
 
 
   //  How to define function with parameters
-  def calculateDonutCost(donutName: String, quantity: Int=1, couponCode: Option[String]=None): Option[Double] = {
-    println(s"Calculating cost for $donutName, quantity = $quantity")
+  def calculatechocalateCost(chocalateName: String, quantity: Int=1, couponCode: Option[String]=None): Option[Double] = {
+    println(s"Calculating cost for $chocalateName, quantity = $quantity")
 
     Some(2.50 * quantity)
   }
 
 
   //  How to define a function which takes implicit parameter(s)
-  def totalCost(donutType: String, quantity: Int)(implicit discount: Double, storeName: String): Double = {
-    println(s"Calculating the price for $quantity $donutType")
+  def totalCost(chocalateType: String, quantity: Int)(implicit discount: Double, storeName: String): Double = {
+    println(s"Calculating the price for $quantity $chocalateType")
     val totalCost = 2.50 * quantity * (1 - discount)
     totalCost
   }
 
   implicit val discount: Double = 0.1
-  implicit val storeName: String = "Tasty Donut Store"
+  implicit val storeName: String = "Tasty chocalate Store"
 
-  println(s"""Total cost with discount of 5 Glazed Donuts = ${totalCost("Glazed Donut", 5)}""")
+  println(s"""Total cost with discount of 5 Glazed chocalates = ${totalCost("Glazed chocalate", 5)}""")
 
 
   //  How to create a wrapper String class which will extend the String type
 
-  class DonutString(s: String) {
+  class chocalateString(s: String) {
 
-    def isFavoriteDonut: Boolean = s == "Glazed Donut"
+    def isFavoritechocalate: Boolean = s == "Glazed chocalate"
 
   }
 
 
   //  How to create an implicit function to convert a String to the wrapper String class
-  object DonutConverstions {
-    implicit def stringToDonutString(s: String) = new DonutString(s)
+  object chocalateConverstions {
+    implicit def stringTochocalateString(s: String) = new chocalateString(s)
   }
 
 
   //  How to import the String conversion so that it is in scope
-  import DonutConverstions._
+  import chocalateConverstions._
 
-  val glazedDonut = "Glazed Donut"
-  val vanillaDonut = "Vanilla Donut"
+  val glazedchocalate = "Glazed chocalate"
+  val vanillachocalate = "Vanilla chocalate"
 
 
-  //  How to access the custom String function called isFavaoriteDonut
-  println("\nStep 5: How to access the custom String function called isFavaoriteDonut")
-  println(s"Is Glazed Donut my favorite Donut = ${glazedDonut.isFavoriteDonut}")
-  println(s"Is Vanilla Donut my favorite Donut = ${vanillaDonut.isFavoriteDonut}")
+  //  How to access the custom String function called isFavaoritechocalate
+  println("\nStep 5: How to access the custom String function called isFavaoritechocalate")
+  println(s"Is Glazed chocalate my favorite chocalate = ${glazedchocalate.isFavoritechocalate}")
+  println(s"Is Vanilla chocalate my favorite chocalate = ${vanillachocalate.isFavoritechocalate}")
 
 
   //  Typed Function
@@ -119,19 +119,19 @@ object functions {
 
   //  Variable Argument Function
   def printReport(names: String*) {
-    println(s"""Donut Report = ${names.mkString(" - ")}""")
+    println(s"""chocalate Report = ${names.mkString(" - ")}""")
   }
 
-  printReport("Glazed Donut", "Strawberry Donut", "Vanilla Donut")
-  printReport("Chocolate Donut")
+  printReport("Glazed chocalate", "Strawberry chocalate", "Vanilla chocalate")
+  printReport("Chocolate chocalate")
 
-  val listDonuts: List[String] = List("Glazed Donut", "Strawberry Donut", "Vanilla Donut")
+  val listchocalates: List[String] = List("Glazed chocalate", "Strawberry chocalate", "Vanilla chocalate")
 
-  printReport(listDonuts: _*)
+  printReport(listchocalates: _*)
 
 
   //  Functions As Symbols
-  class DonutCostCalculator {
+  class chocalateCostCalculator {
 
     // We are hard-coding the totalCost value for simplicity.
     val totalCost = 100
@@ -149,41 +149,41 @@ object functions {
     }
   }
 
-  val donutCostCalculator = new DonutCostCalculator()
+  val chocalateCostCalculator = new chocalateCostCalculator()
 
-  println(s"Calling minusDiscount() function = ${donutCostCalculator.minusDiscount(10.5)}")
+  println(s"Calling minusDiscount() function = ${chocalateCostCalculator.minusDiscount(10.5)}")
 
-  println(s"Calling function - = ${donutCostCalculator.-(10.5)}")
+  println(s"Calling function - = ${chocalateCostCalculator.-(10.5)}")
 
-  println(s"Calling function - with operator style notation = ${donutCostCalculator - 10.5}")
+  println(s"Calling function - with operator style notation = ${chocalateCostCalculator - 10.5}")
 
 
   //  Function Currying With Parameter Groups
-  def totalCost(donutType: String)(quantity: Int)(discount: Double): Double = {
-    println(s"Calculating total cost for $quantity $donutType with ${discount * 100}% discount")
+  def totalCost(chocalateType: String)(quantity: Int)(discount: Double): Double = {
+    println(s"Calculating total cost for $quantity $chocalateType with ${discount * 100}% discount")
     val totalCost = 2.50 * quantity
     totalCost - (totalCost * discount)
   }
 
-  println(s"Total cost = ${totalCost("Glazed Donut")(10)(0.1)}")
+  println(s"Total cost = ${totalCost("Glazed chocalate")(10)(0.1)}")
 
-  val totalCostForGlazedDonuts = totalCost("Glazed Donut") _
+  val totalCostForGlazedchocalates = totalCost("Glazed chocalate") _
 
-  println(s"\nTotal cost for Glazed Donuts ${totalCostForGlazedDonuts(10)(0.1)}")
+  println(s"\nTotal cost for Glazed chocalates ${totalCostForGlazedchocalates(10)(0.1)}")
 
 
   //  Higher Order Function - Function As Parameter
-  def totalCostWithDiscountFunctionParameter(donutType: String)(quantity: Int)(f: Double => Double): Double = {
-    println(s"Calculating total cost for $quantity $donutType")
+  def totalCostWithDiscountFunctionParameter(chocalateType: String)(quantity: Int)(f: Double => Double): Double = {
+    println(s"Calculating total cost for $quantity $chocalateType")
     val totalCost = 2.50 * quantity
     f(totalCost)
   }
 
-  val totalCostOf5Donuts = totalCostWithDiscountFunctionParameter("Glazed Donut")(5){totalCost =>
+  val totalCostOf5chocalates = totalCostWithDiscountFunctionParameter("Glazed chocalate")(5){totalCost =>
     val discount = 2
     totalCost - discount
   }
-  println(s"Total cost of 5 Glazed Donuts with anonymous discount function = $totalCostOf5Donuts")
+  println(s"Total cost of 5 Glazed chocalates with anonymous discount function = $totalCostOf5chocalates")
   def applyDiscount(totalCost: Double): Double = {
     val discount = 2
     totalCost - discount
@@ -191,7 +191,7 @@ object functions {
   }
 
 
-  //  println(s"Total cost of 5 Glazed Donuts with discount function = ${totalCostWithDiscountFunctionParameter("Glazed Donut")(5)(applyDiscount(_))}")
+  //  println(s"Total cost of 5 Glazed chocalates with discount function = ${totalCostWithDiscountFunctionParameter("Glazed chocalate")(5)(applyDiscount(_))}")
 
 
   //  Higher Order Function - Call-By-Name Function
@@ -239,7 +239,7 @@ object functions {
 
   val totalCost: Double = 10
 
-  println(s"Total cost of 5 donuts with discount = ${applyDiscountValFunction(totalCost)}")
+  println(s"Total cost of 5 chocalates with discount = ${applyDiscountValFunction(totalCost)}")
 
   val applyTaxValFunction = (amount: Double) => {
     println("Apply tax function")
@@ -247,33 +247,33 @@ object functions {
     amount + tax
   }
 
-  println(s"Total cost of 5 donuts = ${ (applyDiscountValFunction andThen applyTaxValFunction)(totalCost) }")
+  println(s"Total cost of 5 chocalates = ${ (applyDiscountValFunction andThen applyTaxValFunction)(totalCost) }")
 
 
   //  Function Composition Using Compose
-  println(s"Total cost of 5 donuts = ${ (applyDiscountValFunction compose applyTaxValFunction)(totalCost) }")
+  println(s"Total cost of 5 chocalates = ${ (applyDiscountValFunction compose applyTaxValFunction)(totalCost) }")
 
 
   //  Tail Recursive Function - @annotation.tailrec
-  val arrayDonuts: Array[String] = Array("Vanilla Donut", "Strawberry Donut", "Plain Donut", "Glazed Donut")
+  val arraychocalates: Array[String] = Array("Vanilla chocalate", "Strawberry chocalate", "Plain chocalate", "Glazed chocalate")
 
   @annotation.tailrec
-  def search(donutName: String, donuts: Array[String], index: Int): Option[Boolean] = {
-    if(donuts.length == index) {
+  def search(chocalateName: String, chocalates: Array[String], index: Int): Option[Boolean] = {
+    if(chocalates.length == index) {
       None
-    } else if(donuts(index) == donutName) {
+    } else if(chocalates(index) == chocalateName) {
       Some(true)
     } else {
       val nextIndex = index + 1
-      search(donutName, donuts, nextIndex)
+      search(chocalateName, chocalates, nextIndex)
     }
   }
 
-  val found = search("Glazed Donut", arrayDonuts, 0)
-  println(s"Find Glazed Donut = $found")
+  val found = search("Glazed chocalate", arraychocalates, 0)
+  println(s"Find Glazed chocalate = $found")
 
-  val notFound = search("Chocolate Donut", arrayDonuts, 0)
-  println(s"Find Chocolate Donut = $notFound")
+  val notFound = search("Chocolate chocalate", arraychocalates, 0)
+  println(s"Find Chocolate chocalate = $notFound")
 
 
 }

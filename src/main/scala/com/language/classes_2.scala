@@ -3,33 +3,33 @@ package com.language
 object classes_2 {
 
   //  Use Companion Objects' Apply Method As A Factory (Class Hierarchy Via Inheritance)
-  class Donut(name: String, productCode: Option[Long] = None){
+  class chocalate(name: String, productCode: Option[Long] = None){
 
-    def print = println(s"Donut name = $name, productCode = ${productCode.getOrElse(0)}")
+    def print = println(s"chocalate name = $name, productCode = ${productCode.getOrElse(0)}")
 
   }
 
-  class GlazedDonut(name: String) extends Donut(name)
-  class VanillaDonut(name: String) extends Donut(name)
+  class Glazedchocalate(name: String) extends chocalate(name)
+  class Vanillachocalate(name: String) extends chocalate(name)
 
-  object Donut {
+  object chocalate {
 
-    def apply(name: String): Donut = {
+    def apply(name: String): chocalate = {
       name match {
-        case "Glazed Donut" => new GlazedDonut(name)
-        case "Vanilla Donut" => new VanillaDonut(name)
-        case _ => new Donut(name)
+        case "Glazed chocalate" => new Glazedchocalate(name)
+        case "Vanilla chocalate" => new Vanillachocalate(name)
+        case _ => new chocalate(name)
       }
     }
 
   }
 
-  val glazedDonut = Donut("Glazed Donut")
-  println(s"The class type of glazedDonut = ${glazedDonut.getClass}")
-  glazedDonut.print
+  val glazedchocalate = chocalate("Glazed chocalate")
+  println(s"The class type of glazedchocalate = ${glazedchocalate.getClass}")
+  glazedchocalate.print
 
-  val vanillaDonut = Donut("Vanilla Donut")
-  println(s"The class type of vanillaDonut = ${vanillaDonut.getClass}")
-  vanillaDonut.print
+  val vanillachocalate = chocalate("Vanilla chocalate")
+  println(s"The class type of vanillachocalate = ${vanillachocalate.getClass}")
+  vanillachocalate.print
 
 }

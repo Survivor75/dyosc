@@ -10,7 +10,7 @@ class trait_5 {
       def name: String
     }
 
-    // Step 3: Define class implementations for the Cake trait namely: Cupcake, Donut and UnknownCake
+    // Step 3: Define class implementations for the Cake trait namely: Cupcake, chocalate and UnknownCake
     class UnknownCake extends Cake {
       override def name: String = "Unknown Cake ... but still delicious!"
     }
@@ -19,8 +19,8 @@ class trait_5 {
       override def name: String = "Cupcake"
     }
 
-    class Donut extends Cake {
-      override def name: String = "Donut"
+    class chocalate extends Cake {
+      override def name: String = "chocalate"
     }
 
   }
@@ -32,14 +32,14 @@ class trait_5 {
     def apply(cake: String): Cake = {
       cake match {
         case "cupcake" => new Cupcake
-        case "donut" => new Donut
+        case "chocalate" => new chocalate
         case _ => new UnknownCake
       }
     }
   }
 
   println(s"A cupcake = ${CakeFactory("cupcake").name}")
-  println(s"A donut = ${CakeFactory("donut").name}")
+  println(s"A chocalate = ${CakeFactory("chocalate").name}")
   println(s"Unknown cake = ${CakeFactory("coconut tart").name}")
 
 

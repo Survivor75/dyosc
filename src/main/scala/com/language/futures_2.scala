@@ -8,16 +8,16 @@ import scala.util.{Failure, Success}
 class futures_2 {
 
   //  Future foldLeft
-  def donutStock(donut: String): Future[Option[Int]] = Future {
-    println("checking donut stock")
-    if(donut == "vanilla donut") Some(10) else None
+  def chocalateStock(chocalate: String): Future[Option[Int]] = Future {
+    println("checking chocalate stock")
+    if(chocalate == "vanilla chocalate") Some(10) else None
   }
 
   val futureOperations = List(
-    donutStock("vanilla donut"),
-    donutStock("plain donut"),
-    donutStock("chocolate donut"),
-    donutStock("vanilla donut")
+    chocalateStock("vanilla chocalate"),
+    chocalateStock("plain chocalate"),
+    chocalateStock("chocolate chocalate"),
+    chocalateStock("vanilla chocalate")
   )
 
   val futureFoldLeft = Future.foldLeft(futureOperations)(0){ case (acc, someQty) =>
@@ -45,11 +45,11 @@ class futures_2 {
   }
 
   //  Future zip
-  def donutPrice(): Future[Double] = Future.successful(3.25)
+  def chocalatePrice(): Future[Double] = Future.successful(3.25)
 
-  val donutStockAndPriceOperation = donutStock("vanilla donut") zip donutPrice()
+  val chocalateStockAndPriceOperation = chocalateStock("vanilla chocalate") zip chocalatePrice()
 
-  donutStockAndPriceOperation.onComplete {
+  chocalateStockAndPriceOperation.onComplete {
     case Success(results) => println(s"Results $results")
     case Failure(e)       => println(s"Error processing future operations, error = ${e.getMessage}")
   }
@@ -57,14 +57,14 @@ class futures_2 {
   //  Future zipWith
   val qtyAndPriceF: (Option[Int], Double) => (Int, Double) = (someQty, price) => (someQty.getOrElse(0), price)
 
-  val donutAndPriceOperation = donutStock("vanilla donut").zipWith(donutPrice())(qtyAndPriceF)
-  donutAndPriceOperation.onComplete {
+  val chocalateAndPriceOperation = chocalateStock("vanilla chocalate").zipWith(chocalatePrice())(qtyAndPriceF)
+  chocalateAndPriceOperation.onComplete {
     case Success(result) => println(s"Result $result")
     case Failure(e)      => println(s"Error processing future operations, error = ${e.getMessage}")
   }
 
   //  Future andThen
-  val donutStockOperation = donutStock("vanilla donut")
-  donutStockOperation.andThen { case stockQty => println(s"Donut stock qty = $stockQty")}
+  val chocalateStockOperation = chocalateStock("vanilla chocalate")
+  chocalateStockOperation.andThen { case stockQty => println(s"chocalate stock qty = $stockQty")}
 
 }
