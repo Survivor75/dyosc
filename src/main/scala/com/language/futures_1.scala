@@ -4,6 +4,7 @@ import scala.concurrent.duration._
 import scala.concurrent.{Await, Future}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success}
+import scala.language.postfixOps
 
 object futures_1 {
 
@@ -92,4 +93,24 @@ object futures_1 {
   }
 
 
+}
+
+object Test extends App {
+  def chocalateStock(chocalate: String): Future[Option[Int]] = Future {
+    println("checking chocalate stock")
+    if(chocalate == "vanilla chocalate") Some(10) else None
+  }
+
+  def buychocalates(quantity: Int): Future[Boolean] = Future {
+    println(s"buying $quantity chocalates")
+    true
+  }
+  Await.result(
+  for {
+    someStock  <- chocalateStock("vanill chocalate")
+    isSuccess  <- buychocalates(someStock.getOrElse(0))
+  } yield {
+    println(s"Buying vanilla chocalate was successful = $isSuccess")
+  }
+  , 1 minute)
 }

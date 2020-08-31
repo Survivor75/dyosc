@@ -75,12 +75,12 @@ object functions {
     println(s"Lookup percentage discount in database for $couponCode")
   }
 
-  def applyDiscount(percentageDiscount: Double) {
-    println(s"$percentageDiscount discount will be applied")
-  }
+//  def applyDiscount(percentageDiscount: Double) {
+//    println(s"$percentageDiscount discount will be applied")
+//  }
 
   applyDiscount("COUPON_1234")
-  applyDiscount(10)
+//  applyDiscount(10)
 
   def applyDiscount[T](discount: T) {
     discount match {

@@ -49,7 +49,7 @@ object futures_3 {
 
   val chocalate = "vanilla chocalate"
   if(chocalate == "vanilla chocalate") {
-    chocalateStockPromise.success(chocalateStock(chocalate))
+    chocalateStockPromise.success(chocalateStock(chocalate).##)
   } else {
     chocalateStockPromise.failure(Try(chocalateStock(chocalate)).failed.get)
   }
