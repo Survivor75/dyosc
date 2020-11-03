@@ -10,7 +10,6 @@ import org.mongodb.scala.bson.BsonDocument
 import salat.json.{JSONConfig, StrictJSONDateStrategy}
 
 object BsonUtils {
-
   implicit val salatContext = new Context {
     val name = "mongod-salat-context"
     override val  jsonConfig = JSONConfig().copy(dateStrategy = StrictJSONDateStrategy())
@@ -48,10 +47,10 @@ trait Repository[T <: CaseClass] {
   def delete(id: String): Option[T]
   def delete(query: Bson): Long
   def find(criteria: Option[Bson] = None, paging: Option[Pager] = None): List[T]
+
 }
 
 class MongoRepository[T <: CaseClass : Manifest](collectionName: String, database : Option[String] = None) extends Repository[T] with Mongod {
-
   val collection = withDb(database).getCollection(collectionName)
 
   override def create(entity: T, idOpt: Option[String]): T = ???

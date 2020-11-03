@@ -9,7 +9,6 @@ import org.mongodb.scala.MongoClient
 import scala.language.implicitConversions
 
 object MongoCodecs {
-
   protected val customCodecRegistry = CodecRegistries.fromCodecs(new BigDecimalCodec, new JodaDateTimeCodec, new JodaLocalDateCodec, new JavaDateCodec)
   val codecRegistry =
     CodecRegistries.fromRegistries(MongoClient.DEFAULT_CODEC_REGISTRY, com.mongodb.MongoClient.getDefaultCodecRegistry, customCodecRegistry)
