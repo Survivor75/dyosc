@@ -1,0 +1,1 @@
+[warn] insecure HTTP request is deprecated 'http://artifactory.joveo.com/artifactory/list/sbt-release/'; switch to HTTPS or opt-in as ("artifactory" at "http://artifactory.joveo.com/artifactory/list/sbt-release/").withAllowInsecureProtocol(true)
