@@ -1,6 +1,6 @@
 package com.language
 
-object fundamentals {
+object fundamentals_1 {
 
   //  Immutable variables
   val chocalatesToBuy: Int = 5

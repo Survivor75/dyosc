@@ -2,7 +2,7 @@ package com.language
 
 import scala.util.Random
 
-object functions {
+object functions_1 {
 
   //  How to define and use a function which has no parameters and has a return type
   def favoritechocalate(): String = {
